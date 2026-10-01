@@ -1,1 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>PocketSmart AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo">
+            Pocket<span>Smart</span> AI
+        </div>
+
+        <nav>
+            <a href="#" class="active">Dashboard</a>
+            <a href="#home">Home</a>
+            <a href="#party">Party</a>
+            <a href="#jewelry">Jewelry</a>
+            <a href="#history">History</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="container">
+
+        <!-- INTRO -->
+        <section class="intro">
+
+            <p class="workspace">
+                YOUR WORKSPACE
+            </p>
+
+            <h1>
+                Hi, nish <span class="wave">👋</span>
+            </h1>
+
+            <p class="subtitle">
+                Choose a planner and let PocketSmart AI build a
+                budget-aware starting plan.
+            </p>
+
+        </section>
+
+
+        <!-- PLANNER CARDS -->
+        <section class="cards">
+
+            <!-- HOME -->
+            <div class="card" id="home" onclick="openPlanner('Home Interior')">
+
+                <div class="icon home-icon">
+                    🏠
+                </div>
+
+                <h2>Home Interior</h2>
+
+                <p>
+                    Furniture, lighting,
+                    storage and décor.
+                </p>
+
+                <button>
+                    Start Planning →
+                </button>
+
+            </div>
+
+
+            <!-- PARTY -->
+            <div class="card" id="party" onclick="openPlanner('Party')">
+
+                <div class="icon party-icon">
+                    🎉
+                </div>
+
+                <h2>Party</h2>
+
+                <p>
+                    Catering, venue,
+                    decoration and more.
+                </p>
+
+                <button>
+                    Start Planning →
+                </button>
+
+            </div>
+
+
+            <!-- JEWELRY -->
+            <div class="card" id="jewelry" onclick="openPlanner('Jewelry')">
+
+                <div class="icon jewelry-icon">
+                    💎
+                </div>
+
+                <h2>Jewelry</h2>
+
+                <p>
+                    Occasion, style and
+                    optional outfit matching.
+                </p>
+
+                <button>
+                    Start Planning →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTORY -->
+        <section id="history" class="history-section">
+
+            <p class="workspace">
+                QUICK ACCESS
+            </p>
+
+            <h2>Your Planning History</h2>
+
+            <div class="history-box">
+
+                <div>
+                    <strong>Welcome to PocketSmart AI</strong>
+                    <p>
+                        Your previous plans will appear here.
+                    </p>
+                </div>
+
+                <span>🗂️</span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL -->
+    <div class="modal" id="plannerModal">
+
+        <div class="modal-content">
+
+            <button class="close" onclick="closePlanner()">
+                ×
+            </button>
+
+            <div class="modal-icon" id="modalIcon">
+                ✨
+            </div>
+
+            <h2 id="modalTitle">
+                Planner
+            </h2>
+
+            <p>
+                Let's create a budget-aware plan for you.
+            </p>
+
+            <label>
+                Your Budget
+            </label>
+
+            <div class="budget-input">
+
+                <span>₹</span>
+
+                <input
+                    type="number"
+                    id="budget"
+                    placeholder="Enter your budget"
+                >
+
+            </div>
+
+            <button class="generate-btn" onclick="generatePlan()">
+                Generate AI Plan
+            </button>
+
+            <div id="result"></div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <p>
+            © 2026 PocketSmart AI
+        </p>
+
+        <p>
+            Smart Planning • Smart Budget • Smart Life
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
