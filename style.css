@@ -1,6 +1,7 @@
-/* =========================
-   BASIC RESET
-========================= */
+/* =========================================
+   POCKETSMART AI
+   EXACT WHITE BACKGROUND STYLE
+========================================= */
 
 * {
     margin: 0;
@@ -14,21 +15,211 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+
     background: #ffffff;
+
     color: #10264d;
 }
 
 
-/* =========================
+/* =========================================
+   COMMON
+========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   LOGIN PAGE
+========================================= */
+
+.login-page {
+
+    min-height: 100vh;
+
+    background: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+}
+
+
+.login-card {
+
+    width: 450px;
+
+    background: #ffffff;
+
+    border: 1px solid #dce6f2;
+
+    border-radius: 20px;
+
+    padding: 45px;
+
+    box-shadow:
+        0 15px 45px rgba(16, 38, 77, 0.08);
+
+}
+
+
+.login-logo {
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    color: #10264d;
+
+    margin-bottom: 35px;
+
+    text-align: center;
+}
+
+
+.login-logo span {
+    color: #1677ff;
+}
+
+
+.login-card h1 {
+
+    font-size: 34px;
+
+    margin-bottom: 10px;
+
+    color: #10264d;
+}
+
+
+.login-subtitle {
+
+    color: #61738e;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    margin-bottom: 30px;
+}
+
+
+.input-group {
+
+    margin-bottom: 20px;
+}
+
+
+.input-group label {
+
+    display: block;
+
+    font-weight: 700;
+
+    font-size: 15px;
+
+    margin-bottom: 8px;
+
+    color: #10264d;
+}
+
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #ccd9e8;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #10264d;
+}
+
+
+.input-group input:focus {
+
+    border-color: #1677ff;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 119, 255, 0.08);
+}
+
+
+.login-btn {
+
+    width: 100%;
+
+    border: none;
+
+    background: #1677ff;
+
+    color: #ffffff;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-top: 5px;
+
+    transition: 0.3s;
+}
+
+
+.login-btn:hover {
+
+    background: #075ed6;
+
+    transform: translateY(-2px);
+}
+
+
+.login-note {
+
+    text-align: center;
+
+    color: #8997aa;
+
+    font-size: 13px;
+
+    margin-top: 25px;
+}
+
+
+
+/* =========================================
    NAVBAR
-========================= */
+========================================= */
 
 .navbar {
+
     width: 100%;
+
     height: 92px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding: 0 4.5%;
@@ -38,41 +229,50 @@ body {
     border-bottom: 1px solid #e9eef5;
 
     position: sticky;
+
     top: 0;
+
     z-index: 100;
 }
 
 
-/* LOGO */
-
 .logo {
+
     font-size: 34px;
+
     font-weight: 800;
+
     letter-spacing: -1.5px;
+
     color: #10264d;
 }
+
 
 .logo span {
     color: #1677ff;
 }
 
 
-/* NAVIGATION */
-
 nav {
+
     display: flex;
+
     align-items: center;
+
     gap: 38px;
 }
 
+
 nav a {
+
     position: relative;
 
     text-decoration: none;
 
     color: #12284d;
 
-    font-size: 18px;
+    font-size: 17px;
+
     font-weight: 600;
 
     padding: 34px 0;
@@ -80,34 +280,44 @@ nav a {
     transition: 0.3s;
 }
 
+
 nav a:hover {
+
     color: #1677ff;
 }
+
 
 nav a.active {
+
     color: #1677ff;
 }
 
+
 nav a.active::after {
+
     content: "";
 
     position: absolute;
 
     bottom: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 3px;
 
     background: #1677ff;
 }
 
 
-/* =========================
-   MAIN CONTAINER
-========================= */
+
+/* =========================================
+   MAIN
+========================================= */
 
 .container {
+
     max-width: 1450px;
 
     margin: auto;
@@ -116,15 +326,18 @@ nav a.active::after {
 }
 
 
-/* =========================
+/* =========================================
    INTRO
-========================= */
+========================================= */
 
 .intro {
+
     margin-bottom: 58px;
 }
 
+
 .workspace {
+
     color: #1677ff;
 
     font-size: 17px;
@@ -133,31 +346,36 @@ nav a.active::after {
 
     letter-spacing: 5px;
 
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 }
 
-.intro h1 {
-    font-size: 64px;
 
-    line-height: 1.1;
+.intro h1 {
+
+    font-size: 58px;
+
+    line-height: 1.15;
 
     letter-spacing: -2px;
 
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 
     color: #10264d;
 }
 
+
 .wave {
+
     display: inline-block;
 
     animation: wave 2s infinite;
 }
 
+
 @keyframes wave {
 
     0% {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 
     20% {
@@ -173,30 +391,31 @@ nav a.active::after {
     }
 
     80% {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 
     100% {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
-
 }
 
 
 .subtitle {
-    font-size: 24px;
+
+    font-size: 23px;
 
     color: #61738e;
 
     line-height: 1.6;
 
-    max-width: 1100px;
+    max-width: 1050px;
 }
 
 
-/* =========================
-   CARDS
-========================= */
+
+/* =========================================
+   PLANNER CARDS
+========================================= */
 
 .cards {
 
@@ -211,13 +430,13 @@ nav a.active::after {
 
 .card {
 
-    min-height: 390px;
+    min-height: 360px;
 
     border: 1px solid #dce6f2;
 
     border-radius: 18px;
 
-    padding: 48px 50px;
+    padding: 45px 45px;
 
     background: #ffffff;
 
@@ -235,7 +454,7 @@ nav a.active::after {
 
 .card:hover {
 
-    transform: translateY(-8px);
+    transform: translateY(-7px);
 
     border-color: #b9d5ff;
 
@@ -244,16 +463,16 @@ nav a.active::after {
 }
 
 
-/* ICON */
-
 .icon {
 
     width: 82px;
+
     height: 82px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     font-size: 52px;
@@ -266,25 +485,19 @@ nav a.active::after {
 }
 
 
-/* CARD TITLE */
-
 .card h2 {
 
     font-size: 30px;
 
     color: #10264d;
 
-    margin-bottom: 20px;
-
-    letter-spacing: -0.5px;
+    margin-bottom: 18px;
 }
 
 
-/* CARD TEXT */
-
 .card p {
 
-    font-size: 20px;
+    font-size: 19px;
 
     color: #61738e;
 
@@ -292,13 +505,11 @@ nav a.active::after {
 
     min-height: 65px;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 
-/* CARD BUTTON */
-
-.card button {
+.explore-btn {
 
     border: none;
 
@@ -314,179 +525,97 @@ nav a.active::after {
 
     padding: 0;
 
-    opacity: 0;
-
-    transform: translateX(-10px);
-
     transition: 0.3s;
 }
 
-.card:hover button {
 
-    opacity: 1;
+.explore-btn:hover {
 
-    transform: translateX(0);
+    transform: translateX(5px);
 }
 
 
-/* =========================
-   HISTORY
-========================= */
 
-.history-section {
+/* =========================================
+   PLANNER SECTION
+========================================= */
 
-    margin-top: 110px;
+.planner-section {
+
+    margin-top: 75px;
+
+    padding-top: 45px;
+
+    border-top: 1px solid #e5ecf5;
 }
 
-.history-section h2 {
 
-    font-size: 36px;
+.back-btn {
 
-    margin-bottom: 25px;
+    border: none;
+
+    background: transparent;
+
+    color: #1677ff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-bottom: 35px;
 }
 
-.history-box {
+
+.planner-header h2 {
+
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+
+.planner-header > p:last-child {
+
+    color: #61738e;
+
+    font-size: 18px;
+}
+
+
+
+/* =========================================
+   BUDGET PANEL
+========================================= */
+
+.budget-panel {
+
+    margin-top: 35px;
+
+    padding: 30px;
 
     border: 1px solid #dce6f2;
 
     border-radius: 16px;
 
-    padding: 28px 32px;
+    background: #ffffff;
 
     display: flex;
+
+    align-items: end;
 
     justify-content: space-between;
 
-    align-items: center;
-
-    color: #10264d;
-
-    background: #fbfdff;
-}
-
-.history-box p {
-
-    color: #71819a;
-
-    margin-top: 8px;
-}
-
-.history-box span {
-
-    font-size: 35px;
+    gap: 25px;
 }
 
 
-/* =========================
-   MODAL
-========================= */
-
-.modal {
-
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(8, 28, 55, 0.45);
-
-    backdrop-filter: blur(5px);
-
-    align-items: center;
-
-    justify-content: center;
-
-    z-index: 500;
-}
-
-.modal.show {
-
-    display: flex;
-}
-
-
-.modal-content {
-
-    width: 500px;
-
-    max-width: 90%;
-
-    background: white;
-
-    border-radius: 22px;
-
-    padding: 42px;
-
-    position: relative;
-
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.2);
-
-    animation: popup 0.3s ease;
-}
-
-
-@keyframes popup {
-
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-}
-
-
-.close {
-
-    position: absolute;
-
-    right: 22px;
-    top: 18px;
-
-    border: none;
-
-    background: none;
-
-    font-size: 30px;
-
-    cursor: pointer;
-
-    color: #61738e;
-}
-
-
-.modal-icon {
-
-    font-size: 60px;
-
-    margin-bottom: 15px;
-}
-
-.modal-content h2 {
-
-    font-size: 34px;
-
-    margin-bottom: 12px;
-}
-
-.modal-content p {
-
-    color: #687a94;
-
-    font-size: 17px;
-
-    margin-bottom: 25px;
-}
-
-.modal-content label {
+.budget-panel label {
 
     display: block;
+
+    font-size: 15px;
 
     font-weight: 700;
 
@@ -494,9 +623,9 @@ nav a.active::after {
 }
 
 
-/* BUDGET */
-
 .budget-input {
+
+    width: 380px;
 
     display: flex;
 
@@ -504,12 +633,11 @@ nav a.active::after {
 
     border: 1px solid #ccd9e8;
 
-    border-radius: 12px;
+    border-radius: 10px;
 
-    overflow: hidden;
-
-    margin-bottom: 20px;
+    background: #ffffff;
 }
+
 
 .budget-input span {
 
@@ -517,30 +645,31 @@ nav a.active::after {
 
     font-size: 20px;
 
-    font-weight: bold;
+    font-weight: 700;
 
     color: #1677ff;
 }
 
+
 .budget-input input {
+
+    width: 100%;
 
     border: none;
 
     outline: none;
 
-    width: 100%;
-
-    padding: 16px;
+    padding: 15px;
 
     font-size: 17px;
+
+    background: transparent;
+
+    color: #10264d;
 }
 
 
-/* GENERATE */
-
 .generate-btn {
-
-    width: 100%;
 
     border: none;
 
@@ -548,11 +677,11 @@ nav a.active::after {
 
     color: white;
 
-    padding: 16px;
+    padding: 16px 28px;
 
-    border-radius: 12px;
+    border-radius: 10px;
 
-    font-size: 17px;
+    font-size: 16px;
 
     font-weight: 700;
 
@@ -560,6 +689,7 @@ nav a.active::after {
 
     transition: 0.3s;
 }
+
 
 .generate-btn:hover {
 
@@ -569,27 +699,324 @@ nav a.active::after {
 }
 
 
-/* RESULT */
 
-#result {
+/* =========================================
+   BUDGET STATS
+========================================= */
 
-    margin-top: 20px;
+.budget-info {
 
-    padding: 15px;
+    display: grid;
 
-    border-radius: 10px;
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    background: #f4f8ff;
+    gap: 20px;
 
-    color: #17345f;
-
-    line-height: 1.7;
+    margin-top: 25px;
 }
 
 
-/* =========================
+.budget-stat {
+
+    border: 1px solid #dce6f2;
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    background: #ffffff;
+}
+
+
+.budget-stat span {
+
+    display: block;
+
+    color: #71819a;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+
+.budget-stat strong {
+
+    font-size: 25px;
+
+    color: #10264d;
+}
+
+
+
+/* =========================================
+   PLANS
+========================================= */
+
+.plans-container {
+
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+.plan-card {
+
+    border: 1px solid #dce6f2;
+
+    border-radius: 16px;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    transition: 0.3s;
+}
+
+
+.plan-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(22, 119, 255, 0.1);
+
+    border-color: #b9d5ff;
+}
+
+
+.plan-card.featured {
+
+    border: 2px solid #1677ff;
+}
+
+
+.plan-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+
+.plan-icon {
+
+    font-size: 35px;
+}
+
+
+.plan-badge {
+
+    background: #edf5ff;
+
+    color: #1677ff;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.plan-card h3 {
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+
+.plan-card .plan-description {
+
+    color: #61738e;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+.plan-price {
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    color: #1677ff;
+
+    margin-bottom: 20px;
+}
+
+
+.plan-list {
+
+    list-style: none;
+
+    margin-bottom: 22px;
+}
+
+
+.plan-list li {
+
+    color: #516985;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+}
+
+
+.select-plan {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #1677ff;
+
+    background: #ffffff;
+
+    color: #1677ff;
+
+    border-radius: 9px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.select-plan:hover {
+
+    background: #1677ff;
+
+    color: white;
+}
+
+
+.no-plans {
+
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 40px;
+
+    border: 1px dashed #ccd9e8;
+
+    border-radius: 15px;
+
+    color: #71819a;
+}
+
+
+
+/* =========================================
+   HISTORY
+========================================= */
+
+.history-section {
+
+    margin-top: 110px;
+}
+
+
+.history-section h2 {
+
+    font-size: 36px;
+
+    margin-bottom: 25px;
+}
+
+
+.history-empty {
+
+    border: 1px solid #dce6f2;
+
+    border-radius: 16px;
+
+    padding: 28px 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background: #ffffff;
+}
+
+
+.history-empty > span {
+
+    font-size: 35px;
+}
+
+
+.history-empty strong {
+
+    font-size: 17px;
+}
+
+
+.history-empty p {
+
+    color: #71819a;
+
+    margin-top: 7px;
+}
+
+
+.history-item {
+
+    border: 1px solid #dce6f2;
+
+    border-radius: 14px;
+
+    padding: 22px;
+
+    margin-bottom: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: #ffffff;
+}
+
+
+.history-item p {
+
+    color: #71819a;
+
+    margin-top: 6px;
+}
+
+
+
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer {
 
@@ -604,16 +1031,20 @@ footer {
     color: #73839a;
 
     font-size: 14px;
+
+    background: #ffffff;
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
 
-@media (max-width: 1000px) {
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1050px) {
 
     .navbar {
+
         height: auto;
 
         padding: 22px 5%;
@@ -623,7 +1054,9 @@ footer {
         gap: 20px;
     }
 
+
     nav {
+
         gap: 20px;
 
         flex-wrap: wrap;
@@ -631,75 +1064,127 @@ footer {
         justify-content: center;
     }
 
+
     nav a {
+
         padding: 10px 0;
     }
 
+
     nav a.active::after {
+
         display: none;
     }
 
+
     .cards {
+
         grid-template-columns: 1fr;
     }
 
-    .intro h1 {
-        font-size: 48px;
+
+    .plans-container {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .budget-panel {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .budget-input {
+
+        width: 100%;
     }
 
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+
+    .login-card {
+
+        padding: 30px 25px;
+    }
+
 
     .logo {
+
         font-size: 28px;
     }
 
+
     nav {
-        gap: 15px;
+
+        gap: 14px;
     }
 
+
     nav a {
+
         font-size: 14px;
     }
 
+
     .container {
+
         padding-top: 55px;
     }
 
-    .workspace {
-        font-size: 13px;
-        letter-spacing: 3px;
-    }
 
     .intro h1 {
-        font-size: 42px;
+
+        font-size: 38px;
     }
 
+
     .subtitle {
+
         font-size: 18px;
     }
 
+
+    .workspace {
+
+        font-size: 13px;
+
+        letter-spacing: 3px;
+    }
+
+
     .card {
+
         padding: 32px;
     }
 
-    .card h2 {
-        font-size: 26px;
+
+    .budget-info {
+
+        grid-template-columns: 1fr;
     }
 
-    .card p {
-        font-size: 17px;
+
+    .plans-container {
+
+        grid-template-columns: 1fr;
     }
 
-    .card button {
-        opacity: 1;
-        transform: none;
+
+    .planner-header h2 {
+
+        font-size: 34px;
     }
+
 
     footer {
+
         flex-direction: column;
+
         gap: 10px;
     }
 
