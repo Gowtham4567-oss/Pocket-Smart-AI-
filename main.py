@@ -1,84 +1,127 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List
 
-app = FastAPI(title="PocketSmart AI Engine")
+app = FastAPI(title="PocketSmart AI API", version="1.0.0")
 
-# CORS Policy configuration
+# CORS Setup - Frontend connect aaga
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # GitHub Pages matrum local testings ku allow pannum
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-history_ledger = []
+# Request Models
+class HomeDecorRequest(BaseModel):
+    budget: float
+    num_lights: Optional[int] = 0
+    num_fans: Optional[int] = 0
+    num_furniture: Optional[int] = 0
+    notes: Optional[str] = ""
 
-class HomeDecorInput(BaseModel):
-    total_budget: float
-    num_lights: int
-    num_fans: int
-    num_furniture: int
-    additional_requirements: Optional[str] = None
-
-class PartyInput(BaseModel):
+class PartyRequest(BaseModel):
     event_type: str
-    total_budget: float
+    budget: float
     guest_count: int
-    additional_requirements: Optional[str] = None
+    notes: Optional[str] = ""
 
-@app.post("/generate-home")
-def generate_home(data: HomeDecorInput):
-    recommendation = {
-        "status": "success",
-        "domain": "Home Decor",
-        "data": {
-            "budget_breakdown": [
-                {
-                    "category": "Lighting & Fans",
-                    "allocated_amount": data.total_budget * 0.2,
-                    "items": [{"name": "Smart LED & Ceiling Fans", "shopping_links": ["amazon", "flipkart"]}]
-                },
-                {
-                    "category": "Furniture Setup",
-                    "allocated_amount": data.total_budget * 0.8,
-                    "items": [{"name": "Scandinavian Sofa Set", "shopping_links": ["ikea", "amazon"]}]
-                }
-            ]
-        }
-    }
-    history_ledger.append({"domain": "Home Decor", "budget": data.total_budget, "details": data.additional_requirements})
-    return recommendation
+class JewelryRequest(BaseModel):
+    budget: float
+    notes: str
 
-@app.post("/generate-party")
-def generate_party(data: PartyInput):
-    recommendation = {
-        "status": "success",
-        "domain": "Party Package",
-        "data": {
-            "categories": [
-                {"name": "Catering (Swiggy/Zomato)", "budget": data.total_budget * 0.5},
-                {"name": "Venue & Decor", "budget": data.total_budget * 0.5}
-            ]
-        }
-    }
-    history_ledger.append({"domain": "Party", "budget": data.total_budget, "details": data.event_type})
-    return recommendation
+# Endpoints
+@app.get("/")
+def read_root():
+    return {"message": "PocketSmart AI Backend is Running Successfully!"}
 
-@app.post("/generate-jewelry")
-def generate_jewelry(budget: str = Form(...), requirements: str = Form(...)):
-    recommendation = {
-        "status": "success",
-        "domain": "Jewelry Stylist",
-        "recommendation_summary": [
-            f"Suggested Antique Gold set matching requirements within ₹{budget}"
+@app.post("/recommend/home-decor")
+def recommend_home_decor(req: HomeDecorRequest):
+    try:
+        total = req.budget
+        breakdown = [
+            {
+                "category": f"Lighting Setup ({req.num_lights} Lights)",
+                "allocated_amount": round(total * 0.25, 2),
+                "items": ["Smart LED Bulbs & Warm White Strips"]
+            },
+            {
+                "category": f"Fans & Airflow ({req.num_fans} Fans)",
+                "allocated_amount": round(total * 0.35, 2),
+                "items": ["BLDC Energy Saving Ceiling Fans"]
+            },
+            {
+                "category": f"Furniture Essentials ({req.num_furniture} Items)",
+                "allocated_amount": round(total * 0.40, 2),
+                "items": ["Minimalist Wooden Furniture Essentials"]
+            }
         ]
-    }
-    history_ledger.append({"domain": "Jewelry", "budget": budget, "details": requirements})
-    return recommendation
+        return {
+            "status": "success",
+            "domain": "Home Interior",
+            "data": {
+                "total_budget": total,
+                "budget_breakdown": breakdown
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/history/api")
-def get_history():
-    return {"status": "success", "history": history_ledger}
+@app.post("/recommend/party")
+def recommend_party(req: PartyRequest):
+    try:
+        total = req.budget
+        breakdown = [
+            {
+                "category": "Catering & Refreshments",
+                "allocated_amount": round(total * 0.55, 2),
+                "items": [f"Buffet meals for {req.guest_count} guests"]
+            },
+            {
+                "category": "Venue & Decoration",
+                "allocated_amount": round(total * 0.30, 2),
+                "items": ["Theme Balloon Arch & Sound Setup"]
+            },
+            {
+                "category": "Cake & Return Gifts",
+                "allocated_amount": round(total * 0.15, 2),
+                "items": ["Custom Birthday Cake & Gift Favors"]
+            }
+        ]
+        return {
+            "status": "success",
+            "domain": "Party Package",
+            "data": {
+                "event_type": req.event_type,
+                "guest_count": req.guest_count,
+                "budget_breakdown": breakdown
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/recommend/jewelry")
+def recommend_jewelry(req: JewelryRequest):
+    try:
+        total = req.budget
+        recommendations = [
+            f"Curated Antique Gold Finish Matching Set under ₹{total}",
+            "Recommended Brands: CaratLane, Tanishq, and Fine Jewelry collections",
+            "Set includes: Matching Neckpiece, Earrings, and Bangles"
+        ]
+        return {
+            "status": "success",
+            "domain": "Jewelry Stylist",
+            "data": {
+                "total_budget": total,
+                "recommendations": recommendations
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
