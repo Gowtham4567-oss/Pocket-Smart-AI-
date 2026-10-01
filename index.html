@@ -19,9 +19,20 @@
         <li><a href="#history" onclick="showTab('history')">History</a></li>
         <li><a href="#testimonials" onclick="showTab('testimonials')">Testimonials</a></li>
       </ul>
+      
+      <!-- Unauthenticated State -->
       <div class="auth-buttons" id="authContainer">
         <button class="btn btn-outline" onclick="openModal('loginModal')">Login</button>
         <button class="btn btn-primary" onclick="openModal('registerModal')">Register</button>
+      </div>
+
+      <!-- Authenticated Profile State -->
+      <div class="user-profile hidden" id="userProfileContainer">
+        <div class="profile-info">
+          <i class="fa-solid fa-circle-user profile-icon"></i>
+          <span id="userNameDisplay">Gowtham M.S.</span>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="handleLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
       </div>
     </div>
   </nav>
@@ -34,7 +45,7 @@
         <p>Make smarter financial decisions with personalized recommendations for home interiors, party setups, and jewelry purchases within your budget constraints.</p>
         <div class="hero-actions">
           <button class="btn btn-primary btn-lg" onclick="showTab('planners')">Explore Planners</button>
-          <button class="btn btn-outline btn-lg" onclick="scrollToSection('testimonials')">Learn More</button>
+          <button class="btn btn-outline btn-lg" onclick="showTab('testimonials')">Learn More</button>
         </div>
       </div>
     </header>
@@ -78,12 +89,12 @@
         <h3><i class="fa-solid fa-house"></i> Home Interior Budget Form</h3>
         <div class="form-group">
           <label>Total Budget (₹)</label>
-          <input type="number" id="homeBudget" required placeholder="e.g. 120000">
+          <input type="number" id="homeBudget" required placeholder="e.g. 10000" value="10000">
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Lights</label><input type="number" id="numLights" value="4"></div>
-          <div class="form-group"><label>Fans</label><input type="number" id="numFans" value="2"></div>
-          <div class="form-group"><label>Furniture</label><input type="number" id="numFurniture" value="3"></div>
+          <div class="form-group"><label>Lights</label><input type="number" id="numLights" value="5" min="0"></div>
+          <div class="form-group"><label>Fans</label><input type="number" id="numFans" value="3" min="0"></div>
+          <div class="form-group"><label>Furniture</label><input type="number" id="numFurniture" value="2" min="0"></div>
         </div>
         <div class="form-group">
           <label>Additional Requirements</label>
@@ -97,11 +108,11 @@
         <h3><i class="fa-solid fa-cake-candles"></i> Party Package Budget Form</h3>
         <div class="form-group">
           <label>Event Type</label>
-          <input type="text" id="eventType" required placeholder="e.g. Birthday Celebration">
+          <input type="text" id="eventType" required placeholder="e.g. Birthday Celebration" value="Birthday Celebration">
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Total Budget (₹)</label><input type="number" id="partyBudget" required placeholder="45000"></div>
-          <div class="form-group"><label>Guest Count</label><input type="number" id="guestCount" required placeholder="35"></div>
+          <div class="form-group"><label>Total Budget (₹)</label><input type="number" id="partyBudget" required placeholder="45000" value="45000"></div>
+          <div class="form-group"><label>Guest Count</label><input type="number" id="guestCount" required placeholder="35" value="35"></div>
         </div>
         <div class="form-group">
           <label>Additional Requirements</label>
@@ -115,7 +126,7 @@
         <h3><i class="fa-solid fa-gem"></i> Jewelry Stylist Form</h3>
         <div class="form-group">
           <label>Budget Limit (₹)</label>
-          <input type="number" id="jewelryBudget" required placeholder="35000">
+          <input type="number" id="jewelryBudget" required placeholder="35000" value="35000">
         </div>
         <div class="form-group">
           <label>Outfit Style & Occasion</label>
@@ -136,7 +147,7 @@
   <section id="history" class="tab-content container hidden">
     <h2 class="section-title">Saved Recommendation History</h2>
     <div id="historyList" class="history-grid">
-      <p>Loading past queries...</p>
+      <p>No previous searches recorded yet.</p>
     </div>
   </section>
 
@@ -145,7 +156,7 @@
     <h2 class="section-title">User Reviews & Success Stories</h2>
     <div class="testimonial-grid">
       <div class="testimonial-card">
-        <p>"PocketSmart AI helped me furnish my 2BHK within ₹1.2 Lakhs without missing any essentials."</p>
+        <p>"PocketSmart AI helped me furnish my room within ₹10,000 without missing any essentials."</p>
         <h4>- Ananya Sharma</h4>
       </div>
       <div class="testimonial-card">
@@ -161,8 +172,8 @@
       <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
       <h2>Login to PocketSmart AI</h2>
       <form onsubmit="handleLogin(event)">
-        <div class="form-group"><label>Email</label><input type="email" id="loginEmail" required></div>
-        <div class="form-group"><label>Password</label><input type="password" id="loginPassword" required></div>
+        <div class="form-group"><label>Email</label><input type="email" id="loginEmail" required value="gowtha4567@gmail.com"></div>
+        <div class="form-group"><label>Password</label><input type="password" id="loginPassword" required value="••••••••••••"></div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
       </form>
     </div>
@@ -173,8 +184,8 @@
       <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
       <h2>Create an Account</h2>
       <form onsubmit="handleRegister(event)">
-        <div class="form-group"><label>Full Name</label><input type="text" id="regName" required></div>
-        <div class="form-group"><label>Email</label><input type="email" id="regEmail" required></div>
+        <div class="form-group"><label>Full Name</label><input type="text" id="regName" required value="Gowtham M.S."></div>
+        <div class="form-group"><label>Email</label><input type="email" id="regEmail" required value="gowtha4567@gmail.com"></div>
         <div class="form-group"><label>Password</label><input type="password" id="regPassword" required></div>
         <button type="submit" class="btn btn-primary btn-block">Register</button>
       </form>
