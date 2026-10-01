@@ -1,644 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <title>PocketSmart AI</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PocketSmart AI - Smart Budget & Recommendation Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
-
 <body>
 
-    <!-- =========================================
-         LOGIN / REGISTER PAGE
-    ========================================== -->
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo"><i class="fa-solid fa-wallet"></i> PocketSmart <span>AI</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" onclick="showTab('home')">Home</a></li>
+        <li><a href="#planners" onclick="showTab('planners')">Planners</a></li>
+        <li><a href="#history" onclick="showTab('history')">History</a></li>
+        <li><a href="#testimonials" onclick="showTab('testimonials')">Testimonials</a></li>
+      </ul>
+      <div class="auth-buttons" id="authContainer">
+        <button class="btn btn-outline" onclick="openModal('loginModal')">Login</button>
+        <button class="btn btn-primary" onclick="openModal('registerModal')">Register</button>
+      </div>
+    </div>
+  </nav>
 
-    <section id="authPage" class="auth-page">
-
-        <div class="auth-brand">
-
-            <div class="auth-logo">
-                Pocket<span>Smart</span> AI
-            </div>
-
-            <p>
-                Smart planning for your budget.
-            </p>
-
+  <!-- Hero / Home Section -->
+  <section id="home" class="tab-content active">
+    <header class="hero">
+      <div class="hero-content">
+        <h1>AI-Powered Budget Planning for Everyday Needs</h1>
+        <p>Make smarter financial decisions with personalized recommendations for home interiors, party setups, and jewelry purchases within your budget constraints.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" onclick="showTab('planners')">Explore Planners</button>
+          <button class="btn btn-outline btn-lg" onclick="scrollToSection('testimonials')">Learn More</button>
         </div>
-
-
-        <div class="auth-card">
-
-            <!-- LOGIN -->
-
-            <div id="loginBox">
-
-                <div class="auth-small-title">
-                    WELCOME BACK
-                </div>
-
-                <h1>
-                    Login to your account
-                </h1>
-
-                <p class="auth-description">
-                    Continue your smart planning journey.
-                </p>
-
-
-                <form id="loginForm">
-
-                    <div class="form-group">
-
-                        <label>Email</label>
-
-                        <input
-                            type="email"
-                            id="loginEmail"
-                            placeholder="Enter your email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>Password</label>
-
-                        <input
-                            type="password"
-                            id="loginPassword"
-                            placeholder="Enter your password"
-                            required
-                        >
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="primary-btn"
-                    >
-                        Login
-                    </button>
-
-                </form>
-
-
-                <p
-                    id="loginMessage"
-                    class="form-message"
-                ></p>
-
-
-                <div class="switch-auth">
-
-                    New to PocketSmart AI?
-
-                    <button
-                        type="button"
-                        id="showRegister"
-                    >
-                        Create account
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- REGISTER -->
-
-            <div
-                id="registerBox"
-                class="hidden"
-            >
-
-                <div class="auth-small-title">
-                    GET STARTED
-                </div>
-
-                <h1>
-                    Create account
-                </h1>
-
-                <p class="auth-description">
-                    Create your account to start planning.
-                </p>
-
-
-                <form id="registerForm">
-
-                    <div class="form-group">
-
-                        <label>Name</label>
-
-                        <input
-                            type="text"
-                            id="registerName"
-                            placeholder="Enter your name"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>Email</label>
-
-                        <input
-                            type="email"
-                            id="registerEmail"
-                            placeholder="Enter your email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label>Password</label>
-
-                        <input
-                            type="password"
-                            id="registerPassword"
-                            placeholder="Create a password"
-                            minlength="4"
-                            required
-                        >
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="primary-btn"
-                    >
-                        Create Account
-                    </button>
-
-                </form>
-
-
-                <p
-                    id="registerMessage"
-                    class="form-message"
-                ></p>
-
-
-                <div class="switch-auth">
-
-                    Already registered?
-
-                    <button
-                        type="button"
-                        id="showLogin"
-                    >
-                        Login
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         MAIN APPLICATION
-    ========================================== -->
-
-    <div
-        id="app"
-        class="hidden"
-    >
-
-
-        <!-- NAVBAR -->
-
-        <header class="navbar">
-
-            <div class="logo">
-                Pocket<span>Smart</span> AI
-            </div>
-
-
-            <nav>
-
-                <a
-                    href="#dashboard"
-                    class="nav-link active"
-                >
-                    Dashboard
-                </a>
-
-                <a
-                    href="#home"
-                    class="nav-link"
-                >
-                    Home
-                </a>
-
-                <a
-                    href="#party"
-                    class="nav-link"
-                >
-                    Party
-                </a>
-
-                <a
-                    href="#jewelry"
-                    class="nav-link"
-                >
-                    Jewelry
-                </a>
-
-                <a
-                    href="#history"
-                    class="nav-link"
-                >
-                    History
-                </a>
-
-                <a
-                    href="#"
-                    id="logoutBtn"
-                    class="nav-link logout"
-                >
-                    Logout
-                </a>
-
-            </nav>
-
-        </header>
-
-
-
-        <!-- =====================================
-             DASHBOARD
-        ====================================== -->
-
-        <main id="dashboard" class="main-container">
-
-
-            <section class="hero">
-
-                <div class="hero-label">
-                    YOUR SMART WORKSPACE
-                </div>
-
-
-                <h1>
-                    Plan smarter.
-                    <br>
-                    Spend better.
-                    <span>✨</span>
-                </h1>
-
-
-                <p>
-                    Choose a planner and let PocketSmart AI
-                    create a budget-aware starting plan for you.
-                </p>
-
-            </section>
-
-
-
-            <!-- =================================
-                 PLANNER CARDS
-            ================================== -->
-
-            <section class="planner-grid">
-
-
-                <!-- HOME -->
-
-                <article
-                    class="planner-card"
-                    id="home"
-                    data-planner="Home Interior"
-                >
-
-                    <div class="card-icon home-icon">
-                        🏠
-                    </div>
-
-                    <h2>
-                        Home Interior
-                    </h2>
-
-                    <p>
-                        Furniture, lighting,
-                        storage and décor.
-                    </p>
-
-                    <button class="explore-btn">
-                        Explore Plans
-                        <span>→</span>
-                    </button>
-
-                </article>
-
-
-
-                <!-- PARTY -->
-
-                <article
-                    class="planner-card"
-                    id="party"
-                    data-planner="Party"
-                >
-
-                    <div class="card-icon party-icon">
-                        🎉
-                    </div>
-
-                    <h2>
-                        Party
-                    </h2>
-
-                    <p>
-                        Catering, venue,
-                        decoration and entertainment.
-                    </p>
-
-                    <button class="explore-btn">
-                        Explore Plans
-                        <span>→</span>
-                    </button>
-
-                </article>
-
-
-
-                <!-- JEWELRY -->
-
-                <article
-                    class="planner-card"
-                    id="jewelry"
-                    data-planner="Jewelry"
-                >
-
-                    <div class="card-icon jewelry-icon">
-                        💎
-                    </div>
-
-                    <h2>
-                        Jewelry
-                    </h2>
-
-                    <p>
-                        Occasion, style and
-                        outfit matching.
-                    </p>
-
-                    <button class="explore-btn">
-                        Explore Plans
-                        <span>→</span>
-                    </button>
-
-                </article>
-
-            </section>
-
-
-
-            <!-- =================================
-                 PLANNER AREA
-            ================================== -->
-
-            <section
-                id="plannerSection"
-                class="planner-section hidden"
-            >
-
-                <button
-                    id="backToDashboard"
-                    class="back-button"
-                >
-                    ← Back to Dashboard
-                </button>
-
-
-                <div class="planner-heading">
-
-                    <div class="hero-label">
-                        SMART PLANNER
-                    </div>
-
-                    <h2 id="plannerTitle">
-                        Home Interior
-                    </h2>
-
-                    <p id="plannerDescription">
-                        Create a plan based on your budget.
-                    </p>
-
-                </div>
-
-
-
-                <!-- BUDGET INPUT -->
-
-                <div class="budget-box">
-
-                    <div class="budget-input-area">
-
-                        <label>
-                            Enter your budget
-                        </label>
-
-                        <div class="money-input">
-
-                            <span>₹</span>
-
-                            <input
-                                type="number"
-                                id="budgetInput"
-                                placeholder="Example: 50000"
-                                min="1000"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <button
-                        id="generateBtn"
-                        class="generate-btn"
-                    >
-                        ✨ Generate Plans
-                    </button>
-
-                </div>
-
-
-
-                <!-- BUDGET SUMMARY -->
-
-                <div
-                    id="budgetSummary"
-                    class="summary-grid hidden"
-                >
-
-                    <div class="summary-card">
-
-                        <span>
-                            Your Budget
-                        </span>
-
-                        <strong id="summaryBudget">
-                            ₹0
-                        </strong>
-
-                    </div>
-
-
-                    <div class="summary-card">
-
-                        <span>
-                            Plans Available
-                        </span>
-
-                        <strong id="summaryPlans">
-                            0
-                        </strong>
-
-                    </div>
-
-
-                    <div class="summary-card">
-
-                        <span>
-                            Remaining Balance
-                        </span>
-
-                        <strong id="summaryBalance">
-                            ₹0
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- RECOMMENDATIONS -->
-
-                <div class="recommendation-heading">
-
-                    <h2>
-                        Recommended Plans
-                    </h2>
-
-                    <p>
-                        Plans are selected according
-                        to your available budget.
-                    </p>
-
-                </div>
-
-
-                <div
-                    id="plansContainer"
-                    class="plans-grid"
-                ></div>
-
-            </section>
-
-
-
-            <!-- =================================
-                 HISTORY
-            ================================== -->
-
-            <section
-                id="history"
-                class="history-section"
-            >
-
-                <div class="hero-label">
-                    YOUR ACTIVITY
-                </div>
-
-                <h2>
-                    Planning History
-                </h2>
-
-
-                <div id="historyContainer">
-
-                    <div class="empty-history">
-
-                        <div class="history-icon">
-                            🗂️
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                No plans generated yet
-                            </strong>
-
-                            <p>
-                                Your generated plans
-                                will appear here.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </main>
-
-
-
-        <!-- FOOTER -->
-
-        <footer>
-
-            <div>
-                <strong>
-                    PocketSmart AI
-                </strong>
-
-                <span>
-                    Smart Planning • Smart Budget
-                </span>
-            </div>
-
-            <p>
-                © 2026 PocketSmart AI
-            </p>
-
-        </footer>
-
+      </div>
+    </header>
+  </section>
+
+  <!-- Planners Section -->
+  <section id="planners" class="tab-content container">
+    <h2 class="section-title">Our Smart Budget Planners</h2>
+    <p class="section-subtitle">Select a planner below to generate optimized AI spending breakdowns.</p>
+
+    <div class="planner-grid">
+      <!-- Home Decor Card -->
+      <div class="planner-card">
+        <i class="fa-solid fa-house-laptop card-icon"></i>
+        <h3>Home Interior Planner</h3>
+        <p>Recommendations for furniture, lights, and appliances tailored to your room count and budget constraints.</p>
+        <button class="btn btn-primary" onclick="selectPlanner('homeDecor')">Open Planner</button>
+      </div>
+
+      <!-- Party Budget Card -->
+      <div class="planner-card">
+        <i class="fa-solid fa-champagne-glasses card-icon"></i>
+        <h3>Party Budget Planner</h3>
+        <p>Plan catering, venue allocations, and decor for events staying strictly within your financial limit.</p>
+        <button class="btn btn-primary" onclick="selectPlanner('party')">Open Planner</button>
+      </div>
+
+      <!-- Jewelry Planner Card -->
+      <div class="planner-card">
+        <i class="fa-solid fa-gem card-icon"></i>
+        <h3>Jewelry Budget Planner</h3>
+        <p>Match your outfit styles, occasions, and price limits with curated jewelry recommendations.</p>
+        <button class="btn btn-primary" onclick="selectPlanner('jewelry')">Open Planner</button>
+      </div>
     </div>
 
+    <!-- Active Form Container -->
+    <div id="plannerForms" class="form-container hidden">
+      <!-- Home Decor Form -->
+      <form id="homeDecorForm" class="planner-form hidden" onsubmit="handleHomeDecorSubmit(event)">
+        <h3><i class="fa-solid fa-house"></i> Home Interior Budget Form</h3>
+        <div class="form-group">
+          <label>Total Budget (₹)</label>
+          <input type="number" id="homeBudget" required placeholder="e.g. 120000">
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Lights</label><input type="number" id="numLights" value="4"></div>
+          <div class="form-group"><label>Fans</label><input type="number" id="numFans" value="2"></div>
+          <div class="form-group"><label>Furniture</label><input type="number" id="numFurniture" value="3"></div>
+        </div>
+        <div class="form-group">
+          <label>Additional Requirements</label>
+          <textarea id="homeNotes" rows="3" placeholder="e.g. Minimalist design, wooden finish from IKEA or Amazon"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Generate Home Recommendations</button>
+      </form>
 
+      <!-- Party Form -->
+      <form id="partyForm" class="planner-form hidden" onsubmit="handlePartySubmit(event)">
+        <h3><i class="fa-solid fa-cake-candles"></i> Party Package Budget Form</h3>
+        <div class="form-group">
+          <label>Event Type</label>
+          <input type="text" id="eventType" required placeholder="e.g. Birthday Celebration">
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Total Budget (₹)</label><input type="number" id="partyBudget" required placeholder="45000"></div>
+          <div class="form-group"><label>Guest Count</label><input type="number" id="guestCount" required placeholder="35"></div>
+        </div>
+        <div class="form-group">
+          <label>Additional Requirements</label>
+          <textarea id="partyNotes" rows="3" placeholder="e.g. Buffet catering, balloon theme"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Generate Party Recommendations</button>
+      </form>
 
-    <script src="script.js"></script>
+      <!-- Jewelry Form -->
+      <form id="jewelryForm" class="planner-form hidden" onsubmit="handleJewelrySubmit(event)">
+        <h3><i class="fa-solid fa-gem"></i> Jewelry Stylist Form</h3>
+        <div class="form-group">
+          <label>Budget Limit (₹)</label>
+          <input type="number" id="jewelryBudget" required placeholder="35000">
+        </div>
+        <div class="form-group">
+          <label>Outfit Style & Occasion</label>
+          <textarea id="jewelryNotes" rows="3" required placeholder="e.g. South Indian Silk Saree matching set, Antique Gold finish"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Generate Styling Suggestions</button>
+      </form>
 
+      <!-- Output Results Box -->
+      <div id="recommendationOutput" class="output-box hidden">
+        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> AI Recommendation Breakdown</h3>
+        <div id="outputContent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Section -->
+  <section id="history" class="tab-content container hidden">
+    <h2 class="section-title">Saved Recommendation History</h2>
+    <div id="historyList" class="history-grid">
+      <p>Loading past queries...</p>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="tab-content container hidden">
+    <h2 class="section-title">User Reviews & Success Stories</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>"PocketSmart AI helped me furnish my 2BHK within ₹1.2 Lakhs without missing any essentials."</p>
+        <h4>- Ananya Sharma</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"Organizing my sister's birthday was effortless. The Swiggy and venue breakdown matched our exact budget."</p>
+        <h4>- Rajesh Kumar</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Authentication Modals -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+      <h2>Login to PocketSmart AI</h2>
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group"><label>Email</label><input type="email" id="loginEmail" required></div>
+        <div class="form-group"><label>Password</label><input type="password" id="loginPassword" required></div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="registerModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
+      <h2>Create an Account</h2>
+      <form onsubmit="handleRegister(event)">
+        <div class="form-group"><label>Full Name</label><input type="text" id="regName" required></div>
+        <div class="form-group"><label>Email</label><input type="email" id="regEmail" required></div>
+        <div class="form-group"><label>Password</label><input type="password" id="regPassword" required></div>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 PocketSmart AI. Built for Smart Financial Planning.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
